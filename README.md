@@ -7,11 +7,8 @@ If you want to use the program, the first version was not released yet. Please b
 
 ###  2 - If you want to contribute 
 
-If you want to contribute, we are opened to everything! Whatever you age, your skill level or your expertise (programmer, designer, wiki editor, etc.), you can join the project. Beginners will be assigned simple tasks to be easily integrated and older members will always have something to do. To join the project, simply make a pull request or contact us via email (contact@grimedev.com). If you want to program, you will need **C#** and **Xamarin** knowledge at the very least, but you can of course contribute by designing icons for example, or helping with editing and writing the [wiki](https://github.com/Xaphok/GPlanner/wiki), test the program to be sure that everything works, etc. For programmers, we advise you to read the wiki in order to create the work environment.
+If you want to contribute, we are opened to everything! Whatever you age, your skill level or your expertise (programmer, designer, wiki editor, etc.), you can join the project. Beginners will be assigned simple tasks to be easily integrated and older members will always have something to do. To join the project, simply make a pull request or contact us via email (contact@grimedev.com). If you want to program, you will need **C#** and **Xamarin** knowledge at the very least, but you can of course contribute by designing icons for example, or helping with editing and writing the [Wiki](https://github.com/Xaphok/GPlanner/wiki), test the program to be sure that everything works, etc. For programmers, we advise you to read [How to set your work environment](https://github.com/Xaphok/GPlanner/wiki/How-to-set-your-work-environment) in order to create the work environment.
 
 ###  3 - How you should code 
 
-Last but not least, and for programmers, please read the [coding guidelines](https://github.com/Xaphok/GPlanner/wiki/How-you-should-code) section of the wiki before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
-
-
-
+Last but not least, and for programmers, please read the [Coding guidelines](https://github.com/Xaphok/GPlanner/wiki/Coding-guidelines) section of the wiki before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
