@@ -11,7 +11,7 @@ If you want to contribute, we are opened to everything! Whatever you age, your s
 
 ###  3 - How you should code 
 
-Last but not least, and for programmers, please read the [how you should code](https://github.com/Xaphok/GPlanner/wiki/How-you-should-code) section of the wiki before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
+Last but not least, and for programmers, please read the [coding guidelines](https://github.com/Xaphok/GPlanner/wiki/How-you-should-code) section of the wiki before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
 
 
 
