@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="GPlanner.UWP.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:GPlanner.UWP"
-    RequestedTheme="Light">
-
-</Application>
