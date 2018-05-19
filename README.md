@@ -1,3 +1,5 @@
+<h1 align="center"> <br><img src="Extras/horizontal.png?raw=true" alt="Gplanner" width="387"> <br>
+
 # GPlanner
 Welcome to GPlanner, a simple multiplatform app designed to plan your everyday life : create to-do lists and manage them, select when you want to do something, check when something is done, change the priority level of certain tasks, etc.
 
