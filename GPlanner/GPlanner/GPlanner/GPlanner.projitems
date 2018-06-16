@@ -15,6 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\Date.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\TaskToDo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ToDoListPage.xaml.cs">
       <DependentUpon>ToDoListPage.xaml</DependentUpon>
       <SubType>Code</SubType>
