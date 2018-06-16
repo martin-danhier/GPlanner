@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>GPlanner</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.GPlanner</string>
+	<string>com.GrimeDev.GPlanner</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
