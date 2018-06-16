@@ -11,42 +11,44 @@ namespace GPlanner.Classes
     /// </summary>
     class TaskToDo //The name "Task" is already taken by System.Threading.Tasks
     {
-        // ========== ATTRIBUTES ==========
+        // ========== PROPERTIES ==========
 
             //REQUIRED
-        public string _name { get; private set; }
+        public string Name { get; private set; }
 
             //OPTIONAL
-        public Orientation _orientation { get; private set; } // work, hobbies , ?
-        public Importance _importance { get; private set; } //the higher the value, the higher the importance
-        public string _place { get; private set; }
-        public DateTime _deadline { get; private set; }
-        public DateTime _plannedFor { get; private set; }
-        public byte _percentageCompleted { get; private set; }
-        // public ? _repeat { get; private set; } // Repeat this task every day/week/month...
+        public Orientation Orientation { get; private set; } // work, hobbies , ?
+        public Importance Importance { get; private set; } //the higher the value, the higher the importance
+        public string Place { get; private set; }
+        public DateTime Deadline { get; private set; }
+        public DateTime PlannedFor { get; private set; }
+        public string Description { get; private set; }
+        public byte PercentageCompleted { get; private set; }
+        // public ? Repeat { get; private set; } // Repeat this task every day/week/month...
 
         // ========== CONSTRUCTORS ==========
-        public TaskToDo(string name, Importance importance = Importance.NORMAL, string place = "", byte percentageCompleted = 0 )
+        public TaskToDo(string name, string description = "No description" , Importance importance = Importance.Normal, string place = "", byte percentageCompleted = 0 )
         {
-            _name = name;
-            _importance = importance;
-            _place = place;
+            Name = name;
+            Description = description;
+            Importance = importance;
+            Place = place;
             if (percentageCompleted >= 0 && percentageCompleted <= 100)
-                _percentageCompleted = percentageCompleted;
+                PercentageCompleted = percentageCompleted;
             else
                 throw new Exception("Percentage must be between 0 and 100.");
             
-           // _deadline = deadline;
-           // _plannedFor = plannedFor;
-           // _repeat = repeat;
+           // Deadline = deadline;
+           // PlannedFor = plannedFor;
+           // Repeat = repeat;
               
         }
+
         // ========== METHODS ==========
-
-
-
-        // ========== ENUMS ==========
-        public enum Orientation { WORK, HOBBY, NONE } //others ?
-        public enum Importance { LOW, NORMAL, HIGH}
+ 
     }
+
+    // ========== ENUMS ==========
+    public enum Orientation { Work, Hobby, None } //others ?
+    public enum Importance { Low, Normal, High }
 }

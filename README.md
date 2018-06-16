@@ -13,4 +13,4 @@ If you want to contribute, we are opened to everything! Whatever you age, your s
 
 ###  3 - How you should code 
 
-Last but not least, and for programmers, please read the [Coding guidelines](https://github.com/Xaphok/GPlanner/wiki/Coding-guidelines) section of the wiki before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
+Last but not least, and for programmers, try to use the [official naming guidelines](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines) before starting programming (we prefer to set rules from the beggining to have a clean and easy-to-read code, think about newcomers!).
