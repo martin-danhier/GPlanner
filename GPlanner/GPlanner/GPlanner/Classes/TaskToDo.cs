@@ -31,7 +31,10 @@ namespace GPlanner.Classes
             _name = name;
             _importance = importance;
             _place = place;
-            _percentageCompleted = percentageCompleted;
+            if (percentageCompleted >= 0 && percentageCompleted <= 100)
+                _percentageCompleted = percentageCompleted;
+            else
+                throw new Exception("Percentage must be between 0 and 100.");
             
            // _deadline = deadline;
            // _plannedFor = plannedFor;
