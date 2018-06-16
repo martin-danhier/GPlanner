@@ -20,8 +20,8 @@ namespace GPlanner.Classes
         public Orientation _orientation { get; private set; } // work, hobbies , ?
         public Importance _importance { get; private set; } //the higher the value, the higher the importance
         public string _place { get; private set; }
-        public Date _deadline { get; private set; }
-        public Date _plannedFor { get; private set; }
+        public DateTime _deadline { get; private set; }
+        public DateTime _plannedFor { get; private set; }
         public byte _percentageCompleted { get; private set; }
         // public ? _repeat { get; private set; } // Repeat this task every day/week/month...
 
