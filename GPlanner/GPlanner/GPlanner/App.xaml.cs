@@ -1,6 +1,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GPlanner.Views;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace GPlanner
@@ -11,7 +12,7 @@ namespace GPlanner
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new ToDoListPage();
 		}
 
 		protected override void OnStart ()
