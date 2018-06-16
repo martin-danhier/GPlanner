@@ -4,9 +4,15 @@
              x:Class="GPlanner.Views.ToDoListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Insert a to do list here!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView>
+                <ListView.ItemTemplate> 
+                    <DataTemplate> <!-- Template for one task -->
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+                
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
