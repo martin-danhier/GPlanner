@@ -4,8 +4,19 @@
              x:Class="GPlanner.App">
 	<Application.Resources>
         <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="PageBackgroundColor">#ececec</Color>
+            <Color x:Key="TextColor">#141414</Color>
+            
+            <!-- Styles -->
             <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="#ecf0f1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+            </Style>
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
         </ResourceDictionary>
 	</Application.Resources>
