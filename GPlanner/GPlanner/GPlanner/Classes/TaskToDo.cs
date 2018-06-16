@@ -24,15 +24,22 @@ namespace GPlanner.Classes
         public DateTime PlannedFor { get; private set; }
         public string Description { get; private set; }
         public byte PercentageCompleted { get; private set; }
+
+        public bool IsPlanned { get; private set; }
+        public bool HasDeadline { get; private set; }
+
         // public ? Repeat { get; private set; } // Repeat this task every day/week/month...
 
         // ========== CONSTRUCTORS ==========
-        public TaskToDo(string name, string description = "No description" , Importance importance = Importance.Normal, string place = "", byte percentageCompleted = 0 )
+        public TaskToDo(string name, string description = "No description", DateTime plannedFor = new DateTime(), DateTime deadline = new DateTime(),  Importance importance = Importance.Normal, string place = "", byte percentageCompleted = 0 )
         {
             Name = name;
-            Description = description;
             Importance = importance;
+            Deadline = deadline;
+            PlannedFor = plannedFor;
             Place = place;
+            IsPlanned = (PlannedFor > DateTime.Now);
+            HasDeadline = (Deadline > DateTime.Now);
             if (percentageCompleted >= 0 && percentageCompleted <= 100)
                 PercentageCompleted = percentageCompleted;
             else
