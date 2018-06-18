@@ -6,11 +6,12 @@
              x:Class="GPlanner.Views.ToDoListPage">
     
     <ContentPage.Content>
-        <ListView x:Name="ToDoList" RowHeight="90" >
+        <StackLayout Spacing="0">
+            <ListView x:Name="ToDoList" RowHeight="90">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Grid ColumnSpacing="0" RowSpacing="0">
+                    <ViewCell Appearing="ViewCellAppearing">
+                        <Grid ColumnSpacing="0" RowSpacing="0" IsVisible="False" >
                             <!-- grid definition -->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -75,5 +76,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+            <!-- Undo menu -->
+            <StackLayout x:Name="UndoLayout"
+                         Orientation="Horizontal"
+                         Opacity="0"
+                         IsVisible="False"
+                         BackgroundColor="#e74c3c">
+                <Button Text="Arrow" BackgroundColor="Transparent" VerticalOptions="Center" 
+                        Clicked="UndoButtonClicked" BorderColor="Transparent"/>
+                <Label Text="Undo" TextColor="#ecf0f1" VerticalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
