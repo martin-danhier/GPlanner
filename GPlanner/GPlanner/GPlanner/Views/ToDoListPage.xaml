@@ -40,8 +40,12 @@
                             <input:CheckBox HorizontalOptions="Center" 
                                             BoxSizeRequest="40"
                                             Type="Check"
+                                            Color="Green"
                                             Grid.Row="0" Grid.Column="0" 
-                                            Grid.RowSpan="2"/>
+                                            Grid.RowSpan="2"
+                                            Text="{Binding Id}"
+                                            TextColor="Blue"
+                                            CheckChanged="CheckboxCheckChanged"/>
                             
                             <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="10,5" >
                                 <Label.Triggers>

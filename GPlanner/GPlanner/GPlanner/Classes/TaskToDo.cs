@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace GPlanner.Classes
@@ -9,12 +11,13 @@ namespace GPlanner.Classes
     /// <summary>
     /// A task is something that the user has to do. Tasks are displayed in "ToDoListPage".
     /// </summary>
-    class TaskToDo //The name "Task" is already taken by System.Threading.Tasks
+    public class TaskToDo //The name "Task" is already taken by System.Threading.Tasks
     {
         // ========== PROPERTIES ==========
 
             //REQUIRED
         public string Name { get; private set; }
+        public int Id { get; private set; }
 
             //OPTIONAL
         public Orientation Orientation { get; private set; } // work, hobbies , ?
@@ -31,9 +34,10 @@ namespace GPlanner.Classes
         // public ? Repeat { get; private set; } // Repeat this task every day/week/month...
 
         // ========== CONSTRUCTORS ==========
-        public TaskToDo(string name, string description = "No description", DateTime plannedFor = new DateTime(), DateTime deadline = new DateTime(),  Importance importance = Importance.Normal, string place = "", byte percentageCompleted = 0 )
+        public TaskToDo(string name, int id, string description = "No description", DateTime plannedFor = new DateTime(), DateTime deadline = new DateTime(),  Importance importance = Importance.Normal, string place = "", byte percentageCompleted = 0 )
         {
             Name = name;
+            Id = id;
             Importance = importance;
             Deadline = deadline;
             PlannedFor = plannedFor;
@@ -54,8 +58,35 @@ namespace GPlanner.Classes
         // ========== METHODS ==========
  
     }
-
     // ========== ENUMS ==========
     public enum Orientation { Work, Hobby, None } //others ?
     public enum Importance { Low, Normal, High }
+
+    // ========== OBSERVABLE COLLECTION ==========
+    public class TaskList : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private ObservableCollection<TaskToDo> _items;
+        
+        public ObservableCollection<TaskToDo> Items
+        {
+            get { return _items;  }
+            set { _items = value; OnPropertyChanged("Items"); }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public TaskList(List<TaskToDo> taskList)
+        {
+            Items = new ObservableCollection<TaskToDo>();
+            foreach (TaskToDo tsk in taskList)
+            {
+                Items.Add(tsk);
+            }
+        }
+    }
 }
