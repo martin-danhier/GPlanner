@@ -26,6 +26,7 @@ dependencies:
   flutter_app_core:
     git:
       url: git://github.com/martin-danhier/flutter_app_core.git
+  flutter_platform_widgets: ^0.20.2
 
 dev_dependencies:
   flutter_test:
