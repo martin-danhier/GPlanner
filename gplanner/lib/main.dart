@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_core/flutter_app_core.dart';
 import 'package:gplanner/pages/home/home.dart';
+import 'package:gplanner/pages/todolist/todolist.dart';
 
 void main() => runApp(App());
 
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
         initialRoute: '/home',
         routes: {
           '/home': (_) => HomePage(),
+          '/todolist': (_) => ToDoListPage(),
         },
         defaultTheme: 'light',
         themes: {
@@ -23,6 +25,11 @@ class App extends StatelessWidget {
             route: '/home',
             name: "Home",
             icon: Icons.home,
+          ),
+          DrawerItem(
+            route: '/todolist',
+            name: "To-do lists",
+            icon: Icons.check_box,
           ),
         ],
       ),
