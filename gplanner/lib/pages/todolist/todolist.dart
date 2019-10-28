@@ -7,28 +7,34 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class ToDoListPage extends StatelessWidget {
   Widget customPercentageBar(double percentage, double width, double height) {
+    // USE ANIMATED CONTAINER
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-      Text("50%"),
-      Stack(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.green[100]),
+          Text("50%"),
+          Stack(
+            children: <Widget>[
+              Container(
+                width: width,
+                height: height,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.green[100]),
+              ),
+              Container(
+                width: width * (percentage / 100),
+                height: height,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.green),
+              ),
+            ],
           ),
-          Container(
-            width: width * (percentage / 100),
-            height: height,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5), color: Colors.green),
+          SizedBox(
+            // This sized box is used to put the percentage bar at the same level than the todolist title
+            height: 12,
           ),
-        ],
-      ),
-    ]);
+        ]);
   }
 
   @override
@@ -46,7 +52,7 @@ class ToDoListPage extends StatelessWidget {
               leading: Icon(Icons.check_box, color: Colors.green),
               title: Text(
                 "Ma to-do list",
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 20),
               ),
               trailing: customPercentageBar(50, 90, 15),
             ),
@@ -55,9 +61,7 @@ class ToDoListPage extends StatelessWidget {
           ExpansionTile(
             leading: Icon(Icons.list),
             title: Text("Étapes"),
-            children: <Widget>[
-              Text("1ère étape")
-            ],
+            children: <Widget>[Text("1ère étape")],
           ),
           //customPercentageBar(50, 300, 20),
         ],
