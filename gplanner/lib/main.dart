@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCore(
       navigation: ParallelNavigation(
-        initialRoute: '/home',
+        initialRoute: '/todolist',
         routes: {
           '/home': (_) => HomePage(),
           '/todolist': (_) => ToDoListPage(),
