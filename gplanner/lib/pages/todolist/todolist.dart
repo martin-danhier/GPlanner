@@ -13,6 +13,7 @@ class ToDoListPage extends StatefulWidget {
 class ToDoListPageState extends State<ToDoListPage> {
   double percentage = 60;
   double prioritySliderValue = 0;
+  final textFieldAddStepController = TextEditingController();
 
   // This data will be acquired from the database
   var steps = [
@@ -91,12 +92,19 @@ class ToDoListPageState extends State<ToDoListPage> {
                   title: Text("Ajouter une étape"),
                   content: TextField(
                     decoration: InputDecoration(hintText: "Nom de l'étape"),
+                    controller: textFieldAddStepController,
                   ),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text("Fermer"),
+                      child: Text("Ajouter"),
                       onPressed: () {
-                        Navigator.pop(context);
+                        setState(() {
+                          if (textFieldAddStepController.text != "") {
+                            data.add([textFieldAddStepController.text, false]);
+                            textFieldAddStepController.text = "";
+                          }
+                          Navigator.pop(context);
+                        });                     
                       },
                     ),
                   ],
@@ -109,7 +117,6 @@ class ToDoListPageState extends State<ToDoListPage> {
   }
 
   Widget customPercentageBar(double percentage, double width, double height) {
-    // USE ANIMATED CONTAINER
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
