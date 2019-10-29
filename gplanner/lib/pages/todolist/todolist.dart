@@ -31,31 +31,50 @@ class ToDoListPageState extends State<ToDoListPage> {
         nbTrue += 1;
       }
     }
-    return nbTrue / nbSteps * 100;
+    if (nbSteps > 0) {
+      return nbTrue / nbSteps * 100;
+    } else {
+      return 0;
+    }
   }
 
   List<Widget> buildListTiles(data) {
     var widgets = new List<Widget>();
     for (int i = 0; i < data.length; i++) {
-      widgets.add(ListTile(
-        title: Text(data[i][0]),
-        leading: IconButton(
-          icon: Icon(
-            (data[i][1] == false)
-                ? Icons.check_box_outline_blank
-                : Icons.check_box,
-            color: (data[i][1] == false)
-                ? Theme.of(context).disabledColor
-                : Colors.green,
+      widgets.add(
+        ListTile(
+          title: Text(data[i][0]),
+          leading: IconButton(
+            icon: Icon(
+              (data[i][1] == false)
+                  ? Icons.check_box_outline_blank
+                  : Icons.check_box,
+              color: (data[i][1] == false)
+                  ? Theme.of(context).disabledColor
+                  : Colors.green,
+            ),
+            onPressed: () {
+              setState(() {
+                // Update db
+                (steps[i][1] == true)
+                    ? steps[i][1] = false
+                    : steps[i][1] = true;
+              });
+            },
           ),
-          onPressed: () {
-            setState(() {
-              // Update db
-              (steps[i][1] == true) ? steps[i][1] = false : steps[i][1] = true;
-            });
-          },
+          trailing: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+            onPressed: () {
+              setState(() {
+                steps.removeAt(i);
+              });
+            },
+          ),
         ),
-      ));
+      );
     }
     return widgets;
   }
