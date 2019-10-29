@@ -16,14 +16,7 @@ class ToDoListPageState extends State<ToDoListPage> {
   final textFieldAddStepController = TextEditingController();
 
   // This data will be acquired from the database
-  var steps = [
-    ["Salut", false],
-    ["Coucou", false],
-    ["Bonjour", false],
-    ["Hey", false],
-    ["Salut", false],
-    ["Salut", false],
-  ];
+  var steps = [];
 
   double getPercentage(data) {
     int nbSteps = data.length;
@@ -157,8 +150,8 @@ class ToDoListPageState extends State<ToDoListPage> {
       appBar: PlatformAppBar(
         title: const Text("Home"),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             padding: EdgeInsets.symmetric(vertical: 10),
