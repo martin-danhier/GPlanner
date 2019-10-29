@@ -5,13 +5,67 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_app_core/core/app_core.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-class ToDoListPage extends StatelessWidget {
+class ToDoListPage extends StatefulWidget {
+  @override
+  ToDoListPageState createState() => ToDoListPageState();
+}
+
+class ToDoListPageState extends State<ToDoListPage> {
+  double percentage = 60;
+
+  // This data will be acquired from the database
+  var steps = [
+    ["Salut", false],
+    ["Coucou", false],
+    ["Bonjour", false],
+    ["Hey", false],
+    ["Salut", false],
+    ["Salut", false],
+  ];
+
+  double getPercentage(data) {
+    int nbSteps = data.length;
+    int nbTrue = 0;
+    for (int i = 0; i < nbSteps; i++) {
+      if (data[i][1] == true) {
+        nbTrue += 1;
+      }
+    }
+    return nbTrue / nbSteps * 100;
+  }
+
+  List<Widget> buildListTiles(data) {
+    var widgets = new List<Widget>();
+    for (int i = 0; i < data.length; i++) {
+      widgets.add(ListTile(
+        title: Text(data[i][0]),
+        leading: IconButton(
+          icon: Icon(
+            (data[i][1] == false)
+                ? Icons.check_box_outline_blank
+                : Icons.check_box,
+            color: (data[i][1] == false)
+                ? Theme.of(context).disabledColor
+                : Colors.green,
+          ),
+          onPressed: () {
+            setState(() {
+              // Update db
+              (steps[i][1] == true) ? steps[i][1] = false : steps[i][1] = true;
+            });
+          },
+        ),
+      ));
+    }
+    return widgets;
+  }
+
   Widget customPercentageBar(double percentage, double width, double height) {
     // USE ANIMATED CONTAINER
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("50%"),
+          Text("${percentage.round()}%"),
           Stack(
             children: <Widget>[
               Container(
@@ -21,12 +75,17 @@ class ToDoListPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.green[100]),
               ),
-              Container(
+              AnimatedContainer(
+                duration: Duration(milliseconds: 200),
                 width: width * (percentage / 100),
                 height: height,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Colors.green),
+                    color: (getPercentage(steps) < 50)
+                        ? Colors.red
+                        : (getPercentage(steps) < 100)
+                            ? Colors.yellow
+                            : Colors.green),
               ),
             ],
           ),
@@ -49,21 +108,48 @@ class ToDoListPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: 10),
             child: ListTile(
-              leading: Icon(Icons.check_box, color: Colors.green),
+              leading: IconButton(
+                onPressed: () {
+                  setState(() {
+                    bool change;
+                    (getPercentage(steps) == 100)
+                        ? change = false
+                        : change = true;
+                    for (int i = 0; i < steps.length; i++) {
+                      steps[i][1] = change;
+                    }
+                  });
+                },
+                icon: Icon(
+                    (getPercentage(steps) == 100)
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank,
+                    color: (getPercentage(steps) == 100)
+                        ? Colors.green
+                        : Theme.of(context).disabledColor),
+              ),
               title: Text(
                 "Ma to-do list",
                 style: TextStyle(fontSize: 20),
               ),
-              trailing: customPercentageBar(50, 90, 15),
+              trailing: customPercentageBar(getPercentage(steps), 90, 15),
             ),
           ),
-          Divider(),
+          //Divider(),
           ExpansionTile(
+            // onExpansionChanged: (_) {
+            //   setState(() {
+            //     if (_ == true) {
+            //       percentage = 80;
+            //     } else {
+            //       percentage = 60;
+            //     }
+            //   });
+            // },
             leading: Icon(Icons.list),
             title: Text("Étapes"),
-            children: <Widget>[Text("1ère étape")],
+            children: buildListTiles(steps),
           ),
-          //customPercentageBar(50, 300, 20),
         ],
       ),
     );
