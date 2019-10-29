@@ -12,6 +12,7 @@ class ToDoListPage extends StatefulWidget {
 
 class ToDoListPageState extends State<ToDoListPage> {
   double percentage = 60;
+  double prioritySliderValue = 0;
 
   // This data will be acquired from the database
   var steps = [
@@ -76,6 +77,34 @@ class ToDoListPageState extends State<ToDoListPage> {
         ),
       );
     }
+    widgets.add(
+      FlatButton(
+        child: Text(
+          "Ajouter une étape",
+          style: TextStyle(color: Colors.blueAccent),
+        ),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("Ajouter une étape"),
+                  content: TextField(
+                    decoration: InputDecoration(hintText: "Nom de l'étape"),
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text("Fermer"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              });
+        },
+      ),
+    );
     return widgets;
   }
 
@@ -169,6 +198,44 @@ class ToDoListPageState extends State<ToDoListPage> {
             title: Text("Étapes"),
             children: buildListTiles(steps),
           ),
+          ListTile(
+            leading: Icon(Icons.calendar_today),
+            title: Text("Deadline"),
+          ),
+          ListTile(
+            leading: Icon(Icons.priority_high),
+            title: Text("Priorité"),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider(
+                divisions: 2,
+                value: prioritySliderValue,
+                label: (prioritySliderValue == 0)
+                    ? "Faible"
+                    : (prioritySliderValue == 0.5) ? "Moyenne" : "Élevée",
+                onChanged: (double value) {
+                  setState(() {
+                    prioritySliderValue = value;
+                  });
+                },
+              ),
+            ),
+          ),
+          // SizedBox(
+          //   width: 300,
+          //   child: Slider(
+          //     divisions: 2,
+          //     value: prioritySliderValue,
+          //     label: (prioritySliderValue == 0)
+          //         ? "Faible"
+          //         : (prioritySliderValue == 0.5) ? "Moyenne" : "Élevée",
+          //     onChanged: (double value) {
+          //       setState(() {
+          //         prioritySliderValue = value;
+          //       });
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );
